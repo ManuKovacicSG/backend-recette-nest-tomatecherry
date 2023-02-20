@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory, raw } from '@nestjs/mongoose';
+import mongoose from 'mongoose';
 import { Document, ObjectId } from 'mongoose';
 import { Ingredient } from 'src/ingredients/schema/ingredient.schema';
 
@@ -19,8 +20,17 @@ export class User {
   @Prop({ required: true, match: /.+\@.+\..+/ })
   email: string;
 
-  @Prop()
-  shopping_list: Array<Ingredient>;
+  @Prop(raw([{
+    ingredient:{type: mongoose.Schema.Types.ObjectId,ref: "Ingredient"},
+    qty:{type: Number},
+    _id:false
+  }]))
+  shopping_list: [
+    {
+    ingredient:ObjectId,
+    qty: number
+  }
+  ];
 
   @Prop()
   favourites: string;

@@ -7,6 +7,7 @@ import { Model, ObjectId } from 'mongoose';
 import { Request } from 'express';
 import { hash } from 'bcrypt';
 import { EncryptService } from 'src/tools/encrypt.service';
+import { CreateShoppingListDto } from './dto/create-shopping-list.dto';
 
 @Injectable()
 export class UsersService {
@@ -46,4 +47,8 @@ export class UsersService {
   async remove(id: string) {
     return this.userModel.findByIdAndRemove({ _id: id }).exec();
   }
-}
+  async updateShoppingList(id: string, createShoppingListDto: CreateShoppingListDto){
+    return this.userModel.findOneAndUpdate({_id:id},createShoppingListDto, {
+      new: true,
+  })
+}}
