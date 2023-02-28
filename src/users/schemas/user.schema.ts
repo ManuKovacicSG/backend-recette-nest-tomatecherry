@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Prop, Schema, SchemaFactory, raw } from '@nestjs/mongoose';
 import mongoose, { Document, ObjectId }  from 'mongoose';
-import { Ingredient } from 'src/ingredients/schema/ingredient.schema';
+import { Ingredient } from 'src/ingredients/schemas/ingredient.schema';
 
 export type UserDocument = User & Document;
 
@@ -21,7 +21,7 @@ export class User {
 
   @Prop(raw([{
     ingredient:{type: mongoose.Schema.Types.ObjectId,ref: "Ingredient"},
-    qty:{type: Number},
+    qty: {type:Number},
     _id:false
   }]))
   shopping_list: [
