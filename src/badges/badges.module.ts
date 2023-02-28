@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { BadgesService } from './badges.service';
 import { BadgesController } from './badges.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Badge, BadgeSchema } from './schema/badge.schema';
+import { Badge, BadgeSchema } from './schemas/badge.schema';
 
 @Module({
   imports: [

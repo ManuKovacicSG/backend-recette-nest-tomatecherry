@@ -3,7 +3,7 @@ import { CreateBadgeDto } from './dto/create-badge.dto';
 import { UpdateBadgeDto } from './dto/update-badge.dto';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { Badge, BadgeDocument } from './schema/badge.schema';
+import { Badge, BadgeDocument } from './schemas/badge.schema';
 
 
 @Injectable()
